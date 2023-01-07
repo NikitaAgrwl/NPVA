@@ -43,7 +43,7 @@ function Subtotal({ basketData }) {
 
 const mapStateToProps = (state) => {
     return {
-        basketData: state.basketReducer,
+        basketData: state.basketReducer.basket,
     }
 }
 

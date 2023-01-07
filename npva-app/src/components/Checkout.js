@@ -4,9 +4,8 @@ import "../css/checkout.css";
 import CheckoutProduct from './CheckoutProduct';
 import Subtotal from './Subtotal';
 
-function Checkout({ basketData }) {
+function Checkout({ basketData, userData }) {
 
-    // console.log("Checkout page:", basketData);
     return (
         <div className='checkout'>
             <div className='checkout_left'>
@@ -17,6 +16,7 @@ function Checkout({ basketData }) {
                 />
 
                 <div>
+                    <h3>Hey, {userData}</h3>
                     <h2 className='checkout_title'>Your Shopping Basket</h2>
                     {basketData.map(item => (
                         <CheckoutProduct
@@ -39,7 +39,8 @@ function Checkout({ basketData }) {
 
 const mapStateToProps = (state) => {
     return {
-        basketData: state.basketReducer
+        basketData: state.basketReducer.basket,
+        userData: state.userReducer.user
     }
 }
 

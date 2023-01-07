@@ -2,6 +2,7 @@
     display: flex;
     margin-top: 20px;
     margin-bottom: 20px;
+    justify-content: space-between;
 }
 
 .checkoutProduct_info {
@@ -14,6 +15,12 @@
     margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
+}
+
+.checkoutProduct_imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .checkoutProduct_image {

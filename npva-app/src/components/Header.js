@@ -4,8 +4,15 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../css/header.css';
+import { auth } from '../firebase';
 
-function Header({ basketData }) {
+function Header({ basketData, userData }) {
+
+    function handleAuthentication() {
+        if (userData) {
+            auth.signOut();
+        }
+    }
 
     return (
         <div className='header'>
@@ -29,14 +36,16 @@ function Header({ basketData }) {
             </div>
 
             <div className='header_nav'>
-                <div className='header_option'>
-                    <span className='header_optionLneOne'>
-                        Hello, Guest
-                    </span>
-                    <span className='header_optionLneTwo'>
-                        Sign In
-                    </span>
-                </div>
+                <Link to={!userData && "/login"}>
+                    <div onClick={handleAuthentication} className='header_option'>
+                        <span className='header_optionLneOne'>
+                            Hello, {userData ? userData : 'Guest'}
+                        </span>
+                        <span className='header_optionLneTwo'>
+                            {userData ? 'Sign Out' : 'Sign In'}
+                        </span>
+                    </div>
+                </Link>
                 <div className='header_option'>
                     <span className='header_optionLneOne'>
                         Returns
@@ -68,7 +77,8 @@ function Header({ basketData }) {
 
 const mapStateToProps = (state) => {
     return {
-        basketData: state.basketReducer
+        basketData: state.basketReducer.basket,
+        userData: state.userReducer.user
     }
 }
 

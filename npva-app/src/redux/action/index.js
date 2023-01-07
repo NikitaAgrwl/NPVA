@@ -14,3 +14,10 @@ export const removeFromBasket = (id) => {
         id: id
     }
 }
+
+export const setUser = (data) => {
+    return {
+        type: 'SET_USER',
+        payload: data
+    }
+}

@@ -11,12 +11,13 @@ function CheckoutProduct({ compId, id, image, title, price, rating, removeItem }
 
     return (
         <div className='checkoutProduct'>
-            <img
-                className='checkoutProduct_image'
-                src={image}
-                alt=''
-            />
-
+            <div className='checkoutProduct_imageContainer'>
+                <img
+                    className='checkoutProduct_image'
+                    src={image}
+                    alt=''
+                />
+            </div>
             <div className='checkoutProduct_info'>
                 <p className='checkoutProduct_title'>{title}</p>
                 <p className='checkoutProduct_price'>
