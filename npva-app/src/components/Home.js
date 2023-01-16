@@ -32,7 +32,7 @@ function Home() {
                 <div className='home_row'>
                     <Product
                         id="4903850"
-                        title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor"
+                        title="Fitbit SmartBand YZ58934789 | SmartBand with Heartrate Tracker"
                         price={199.99}
                         image="https://images-na.ssl-images-amazon.com/images/I/71Swqqe7XAL._AC_SX466_.jpg"
                         rating={3}

@@ -21,3 +21,10 @@ export const setUser = (data) => {
         payload: data
     }
 }
+
+export const emptyBasket = (data) => {
+    return {
+        type: 'EMPTY_BASKET',
+        payload: data
+    }
+}

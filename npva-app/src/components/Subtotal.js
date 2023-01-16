@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import CurrencyFormat from 'react-currency-format';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import '../css/subtotal.css';
 
 function Subtotal({ basketData }) {
+    const navigate = useNavigate();
     const [total, setTotal] = useState('')
 
     function basketTotal() {
@@ -36,7 +38,7 @@ function Subtotal({ basketData }) {
                 prefix={'₹'}
             />
 
-            <button>Proceed to Checkout</button>
+            <button onClick={e => navigate('/payment')}>Proceed to Checkout</button>
         </div>
     )
 }

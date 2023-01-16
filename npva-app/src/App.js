@@ -7,7 +7,13 @@ import Login from './components/Login';
 import { auth } from './firebase';
 import { setUser } from './redux/action';
 import { connect } from 'react-redux';
+import Payment from './components/Payment';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import Orders from './components/Orders';
 import './App.css';
+
+const promise = loadStripe('pk_test_51MNgF5SIxOAwwBfzJAMu3KBUstEvl77Bt7pZHX4TefkRSf5ETLzERvhnVFgwf2NoKHUWESlzniKt61olHaEf23DH00lMi40Jah');
 
 function App({ addUser }) {
 
@@ -18,7 +24,7 @@ function App({ addUser }) {
 
       if (authUser) {
         //the user just logged in/ the user was logged in
-        addUser(authUser.email);
+        addUser(authUser.email, authUser.uid);
       } else {
         //the user is logged out
         addUser();
@@ -30,7 +36,17 @@ function App({ addUser }) {
     <BrowserRouter>
       <div className="App">
         <Routes>
+          <Route path='/orders' element={[<Header />, <Orders />]} />
           <Route path='/login' element={[<Login />]} />
+          <Route
+            path='/payment'
+            element={
+              [<Header />,
+              <Elements stripe={promise}>
+                <Payment />
+              </Elements>]
+            }
+          />
           <Route path='/' element={[<Header />, <Home />]} />
           <Route path='/checkout' element={[<Header />, <Checkout />]} />
         </Routes>
