@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../firebase';
-import { connect } from 'react-redux';
+import React, { useEffect, useState }   from 'react';
+import Order                            from './Order';
+import { db }                           from '../firebase';
+import { connect }                      from 'react-redux';
 import '../css/orders.css';
-import Order from './Order';
 
-function Orders({ basketData, userData }) {
+function Orders({ userData }) {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
@@ -16,8 +16,8 @@ function Orders({ basketData, userData }) {
                 .orderBy('created', 'desc')
                 .onSnapshot(snapshot => {
                     setOrders(snapshot.docs.map(doc => ({
-                        id: doc.id,
-                        data: doc.data()
+                        id      : doc.id,
+                        data    : doc.data()
                     })))
                 })
         } else {
@@ -27,8 +27,8 @@ function Orders({ basketData, userData }) {
     }, [userData])
 
     return (
-        <div className='orders'>
-            <div className='orders_order'>
+        <div className = 'orders'>
+            <div className = 'orders_order'>
                 {orders?.map(order => {
                     <Order order={order} />
                 })}
@@ -39,8 +39,8 @@ function Orders({ basketData, userData }) {
 
 const mapStateToProps = (state) => {
     return {
-        basketData: state.basketReducer.basket,
-        userData: state.userReducer.user,
+        basketData  : state.basketReducer.basket,
+        userData    : state.userReducer.user,
     }
 }
 

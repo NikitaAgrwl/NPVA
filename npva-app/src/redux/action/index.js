@@ -1,30 +1,30 @@
 export const addToBasket = (data) => {
     return {
-        type: 'ADD_TO_BASKET',
-        payload: {
-            id: Date.now(),
-            data: data
+        type        : 'ADD_TO_BASKET',
+        payload     : {
+            id      : Date.now(),
+            data    : data
         }
     }
 }
 
 export const removeFromBasket = (id) => {
     return {
-        type: 'REMOVE_FROM_BASKET',
-        id: id
+        type        : 'REMOVE_FROM_BASKET',
+        id          : id
     }
 }
 
 export const setUser = (data) => {
     return {
-        type: 'SET_USER',
-        payload: data
+        type        : 'SET_USER',
+        payload     : data
     }
 }
 
 export const emptyBasket = (data) => {
     return {
-        type: 'EMPTY_BASKET',
-        payload: data
+        type        : 'EMPTY_BASKET',
+        payload     : data
     }
 }

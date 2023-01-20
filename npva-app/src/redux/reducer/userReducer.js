@@ -8,7 +8,7 @@ const userReducer = (state = initialState, action) => {
             // console.log(action.payload);
             return {
                 ...state,
-                user: action.payload
+                user    : action.payload
             }
         default:
             return state;

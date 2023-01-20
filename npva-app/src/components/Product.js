@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { addToBasket } from '../redux/action';
+import React            from 'react';
+import { connect }      from 'react-redux';
+import { addToBasket }  from '../redux/action';
 import '../css/product.css';
 
 function Product({ id, title, image, price, rating, addToCart }) {
@@ -8,23 +8,23 @@ function Product({ id, title, image, price, rating, addToCart }) {
     function handleBasket() {
         //dispatch action
         addToCart({
-            id: id,
-            title: title,
-            price: price,
-            rating: rating,
-            image: image
+            id      : id,
+            title   : title,
+            price   : price,
+            rating  : rating,
+            image   : image
         })
     }
 
     return (
-        <div className='product'>
-            <div className='product_info'>
+        <div className = 'product'>
+            <div className = 'product_info'>
                 <p>{title}</p>
-                <p className='product_price'>
+                <p className = 'product_price'>
                     <small> ₹ </small>
                     <strong>{price}</strong>
                 </p>
-                <div className='product_rating'>
+                <div className = 'product_rating'>
                     {Array(rating).fill().map((_, i) => (
                         <p>🌟</p>
                     ))}
@@ -32,9 +32,8 @@ function Product({ id, title, image, price, rating, addToCart }) {
             </div>
 
             <img
-                className=''
-                src={image}
-                alt=''
+                src = {image}
+                alt = ''
             />
 
             <button onClick={handleBasket}>Add to Basket</button>

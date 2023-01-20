@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import CurrencyFormat from 'react-currency-format';
-import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState }   from 'react';
+import CurrencyFormat                   from 'react-currency-format';
+import { connect }                      from 'react-redux';
+import { useNavigate }                  from 'react-router-dom';
 import '../css/subtotal.css';
 
 function Subtotal({ basketData }) {
@@ -18,24 +18,25 @@ function Subtotal({ basketData }) {
     }, [basketData])
 
     return (
-        <div className='subtotal'>
+        <div className = 'subtotal'>
             <CurrencyFormat
-                renderText={(value) => (
+                renderText          = 
+                {(value) => (
                     <>
                         <p>
                             Subtotal ({basketData?.length} items):
                             <strong>{value}</strong>
                         </p>
-                        <small className='subtotal_gift'>
+                        <small className = 'subtotal_gift'>
                             <input type="checkbox" /> This order contains a gift
                         </small>
                     </>
                 )}
-                decimalScale={2}
-                value={total}
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={'₹'}
+                decimalScale        = {2}
+                value               = {total}
+                displayType         = {"text"}
+                thousandSeparator   = {true}
+                prefix              = {'₹'}
             />
 
             <button onClick={e => navigate('/payment')}>Proceed to Checkout</button>
